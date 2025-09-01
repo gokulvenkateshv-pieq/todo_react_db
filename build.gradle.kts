@@ -19,10 +19,11 @@ dependencies {
     implementation("io.dropwizard:dropwizard-core:4.0.15")
     implementation("io.dropwizard:dropwizard-jdbi3:4.0.15")
 
-    // JDBI core, SQL object, Kotlin support
+    // JDBI core + Kotlin support
     implementation("org.jdbi:jdbi3-core:3.45.1")
     implementation("org.jdbi:jdbi3-sqlobject:3.45.1")
     implementation("org.jdbi:jdbi3-kotlin:3.45.1")
+    implementation("org.jdbi:jdbi3-kotlin-sqlobject:3.45.1")
 
     // PostgreSQL driver
     implementation("org.postgresql:postgresql:42.7.2")
@@ -35,10 +36,14 @@ dependencies {
     implementation(kotlin("stdlib"))
 }
 
-tasks.test { useJUnitPlatform() }
+tasks.test {
+    useJUnitPlatform()
+}
 
 kotlin {
-    jvmToolchain { languageVersion.set(JavaLanguageVersion.of(21)) }
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
 }
 
 tasks.named<JavaExec>("run") {

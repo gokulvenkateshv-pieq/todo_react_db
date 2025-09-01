@@ -11,7 +11,7 @@ class UserDao(private val jdbi: Jdbi) {
                 "SELECT id, username, password FROM users WHERE username = :username"
             )
                 .bind("username", username)
-                .mapToBean(User::class.java)
+                .mapTo(User::class.java)
                 .findOne()
                 .orElse(null)
         }

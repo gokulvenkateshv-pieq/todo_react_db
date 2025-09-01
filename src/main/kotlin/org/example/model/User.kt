@@ -1,8 +1,10 @@
-
 package org.example.model
 
-data class User(
-    var id: Int = 0,
-    var username: String = "",
-    var password: String = ""
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonProperty
+
+data class User @JsonCreator constructor(
+    @JsonProperty("id") val id: Int,
+    @JsonProperty("username") val username: String,
+    @JsonProperty("password") val password: String
 )
